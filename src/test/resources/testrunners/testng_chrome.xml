@@ -17,7 +17,7 @@
 
 	</listeners>
 
-	<!-- <test name="Login Page Test">
+	<test name="Login Page Test">
 		<parameter name="browser" value="chrome" />
 		<parameter name="browserversion" value="103.0.5060.53" />
 		<parameter name="testname" value="Login Test" />
@@ -46,7 +46,7 @@
 		<classes>
 			<class name="com.qa.opencart.tests.ProductInfoTest" />
 		</classes>
-	</test> -->
+	</test>
 
 
 	<test name="Register Page Test">
