@@ -8,13 +8,15 @@ import org.testng.annotations.Test;
 import com.qa.opencart.base.BaseTest;
 import com.qa.opencart.constants.AppConstants;
 import com.qa.opencart.utils.ExcelUtil;
+import com.qa.opencart.utils.Xls_Reader;
 
 public class RegisterPageTest extends BaseTest{
-	Object data[][] = null;
+//	Object data[][] = null;
+	Xls_Reader reader= new Xls_Reader();
 	
 	@BeforeClass
 	public void regSetup() {
-		regPage = loginPage.navigateToRegisterPage();
+		//regPage = loginPage.navigateToRegisterPage();
 	}
 	
 	
@@ -50,9 +52,17 @@ public class RegisterPageTest extends BaseTest{
 	
 	@Test
 	public void resetPage() {
-		String xyz="";
-		Object abc= ExcelUtil.getTestData("OpenCartTestData","register","Reset_001","UNIQUE");
-		System.out.println(xyz);
+
+		String firstName=reader.getTestData("OpenCartTestData","register","Reset_001","firstname");
+		String lastName=reader.getTestData("OpenCartTestData","register","Reset_001","lastname");
+		String userName=reader.getTestData("OpenCartTestData","login","Login_1","username");
+		String password=reader.getTestData("OpenCartTestData","login","Login_1","password");
+		System.out.println(firstName);
+		System.out.println(lastName);
+		System.out.println(userName);
+		System.out.println(password);
+		
+		
 		
 		
 	}

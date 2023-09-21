@@ -1,5 +1,5 @@
 package com.qa.opencart.base;
-v
+
 import java.io.IOException;
 import java.util.Properties;
 
@@ -35,7 +35,7 @@ public class BaseTest {
 		prop = df.initProp();
 		
 			if(browserName!=null) {//it means passing the browser from testng.xml
-				prop.setProperty("browser", browserName);
+				//prop.setProperty("browser", browserName);
 				prop.setProperty("browserversion", browserVersion);
 				prop.setProperty("testname", testName);
 				prop.setProperty("env", env);	

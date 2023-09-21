@@ -1,5 +1,4 @@
 package com.qa.opencart.tests;
-v
 import java.util.Map;
 
 import org.testng.Assert;
@@ -18,7 +17,7 @@ public class ProductInfoTest extends BaseTest {
 
 	@BeforeClass
 	public void prodInfoSetup() {
-		accPage = loginPage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
+		//accPage = loginPage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
 	}
 	
 	

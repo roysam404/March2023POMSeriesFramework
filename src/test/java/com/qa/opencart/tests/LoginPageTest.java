@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 
 import com.qa.opencart.base.BaseTest;
 import com.qa.opencart.constants.AppConstants;
+import com.qa.opencart.utils.Xls_Reader;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
@@ -16,56 +17,76 @@ import io.qameta.allure.Story;
 
 
 
-@Epic("EPIC - 100: Desgin of the login page for open cart app")
-@Story("US - 200: implement login page features for open cart app")
+@Epic("EPIC - 100: Desgin of the login page for PayDashboard app")
+@Story("US - 200: implement login page features for PayDashboard app")
 public class LoginPageTest extends BaseTest {
-
-	@Description("login page title test......")
+	Xls_Reader reader= new Xls_Reader();
+	
+	
+	@Description("login Page Specific Data Test......")
 	@Severity(SeverityLevel.NORMAL)
-	@Test(priority = 1)
-	public void loginPageTitleTest() {
-		String actTitle = loginPage.getLoginPageTitle();
+	@Test
+	//@Test(priority = 5, enabled = false)
+	public void loginPageSpecificDataTest() {
+		String actTitle = loginPage.getLoginPageTitle();		
 		Assert.assertEquals(actTitle, AppConstants.LOGIN_PAGE_TITLE);
-
+		String userName=reader.getTestData("LoginTestData","Login","Login_2","username");
+		String password=reader.getTestData("LoginTestData","Login","Login_2","password");
+		String message=reader.getTestData("LoginTestData","Login","Login_2","Message");
+		loginPage.doLogin(userName, password);
+		String actual_Message=loginPage.getErrorMessage();
+		Assert.assertEquals(actual_Message, message);
 	}
-
-	@Description("login page url test......")
+	
+	@Description("login Page Specific Data Test......")
 	@Severity(SeverityLevel.NORMAL)
-	@Test(priority = 2)
-	public void loginPageURLTest() {
-		String actURL = loginPage.getLoginPageURL();
-		Assert.assertTrue(actURL.contains(AppConstants.LOGIN_PAGE_URL_FRACTION));
-
+	@Test
+	//@Test(priority = 5, enabled = false)
+	public void loginPageSpecificDataTest2() {
+		String actTitle = loginPage.getLoginPageTitle();		
+		Assert.assertEquals(actTitle, AppConstants.LOGIN_PAGE_TITLE);
+		String userName=reader.getTestData("LoginTestData","Login","Login_1","username");
+		String password=reader.getTestData("LoginTestData","Login","Login_1","password");
+		String message=reader.getTestData("LoginTestData","Login","Login_1","Message");
+		loginPage.doLogin(userName, password);
+		String actual_Message=loginPage.getErrorMessage();
+		Assert.assertEquals(actual_Message, message);
 	}
 
-	@Description("check forgot pwd link exist on login page......")
-	@Severity(SeverityLevel.CRITICAL)
-	@Test(priority = 3)
-	public void isForgotPwdLinkExistTest() {
-		Assert.assertTrue(loginPage.isForgotPwdLinkExist());
-	}
-
-	@Description("check user is able to login to open cart with valid credentials......")
-	@Severity(SeverityLevel.BLOCKER)
-	@Test(priority = 4)
-	public void loginTest() {
-		accPage = loginPage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
-		Assert.assertEquals(accPage.isLogoutLinkExist(), true);
-	}
-	
-	@Description("checking Experian test")
-	@Severity(SeverityLevel.MINOR)
-	@Test(priority = 6, enabled = false)
-	public void sanityTest() {
-		Assert.assertEquals(true, true);
-	}
-	
-	
-	@Description("checking Experian test")
-	@Severity(SeverityLevel.MINOR)
-	@Test(priority = 5, enabled = false)
-	public void naveenTest() {
-		Assert.assertEquals(true, false);
-	}
+	/*
+	 * @Description("login Page All Data Test......")
+	 * 
+	 * @Severity(SeverityLevel.NORMAL)
+	 * 
+	 * @Test public void loginPageURLTest() { String actURL =
+	 * loginPage.getLoginPageURL();
+	 * Assert.assertTrue(actURL.contains(AppConstants.LOGIN_PAGE_URL_FRACTION));
+	 * 
+	 * }
+	 * 
+	 * @Description("check forgot pwd link exist on login page......")
+	 * 
+	 * @Severity(SeverityLevel.CRITICAL)
+	 * 
+	 * @Test public void isForgotPwdLinkExistTest() {
+	 * Assert.assertTrue(loginPage.isForgotPwdLinkExist()); }
+	 * 
+	 * @Description("check user is able to login to open cart with valid credentials......"
+	 * )
+	 * 
+	 * @Severity(SeverityLevel.BLOCKER)
+	 * 
+	 * @Test public void loginTest() { //accPage =
+	 * loginPage.doLogin(prop.getProperty("username"),
+	 * prop.getProperty("password"));
+	 * Assert.assertEquals(accPage.isLogoutLinkExist(), true); }
+	 * 
+	 * @Description("checking Experian test")
+	 * 
+	 * @Severity(SeverityLevel.MINOR)
+	 * 
+	 * @Test(priority = 6, enabled = false) public void sanityTest() {
+	 * Assert.assertEquals(true, true); }
+	 */
 
 }
